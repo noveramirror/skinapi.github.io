@@ -26,7 +26,7 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 base_URL: https://skin.api.viewty-platform.com/
 
 ### APIの説明
-今回、システムの構成上、APIを2つに分けています。
+システムの構成上、APIを2つに分けています。
 1.リダイレクト先のurlと診断する画像をPOSTし、ハッシュを受け取る
 2.1で受け取ったハッシュと共にGETを叩いて、skin_dataを取得する
 
@@ -37,9 +37,8 @@ base_URL: https://skin.api.viewty-platform.com/
 （callbackURL自体にクエリなどが含まれていると正常にリダイレクトできません）
 
 ### 認証
-ヘッダにこちらで発行したKeyの情報を付与
-x-api-key = 2rvc6m3H5u8EpL4kB7RhIaEGHkH2odnLSva50KMg  
-※Tokenは、こちらを活用してください。
+ヘッダにこちらで発行したKeyの情報を付与してください  
+※Keyは、契約後に配布いたします。
 
 POST : /api/v1/face-detect/third-party-api/
 ```
