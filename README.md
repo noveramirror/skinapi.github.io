@@ -39,7 +39,8 @@ base_URL: https://skin.api.viewty-platform.com/
 ### 認証
 ヘッダにこちらで発行したKeyの情報を付与してください  
 ※Keyは、契約後に配布いたします。
-POST : /api/v1/face-detect/third-party-api/
+
+###### POST : /api/v1/face-detect/third-party-api/
 ```
 #Request
 {
@@ -57,7 +58,7 @@ POST : /api/v1/face-detect/third-party-api/
 }
 ```
 
-GET : /api/v1/face-detect/third-party-api/${hash}/
+###### GET : /api/v1/face-detect/third-party-api/${hash}/
 
 ```
 #Request
