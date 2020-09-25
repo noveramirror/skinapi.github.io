@@ -27,8 +27,8 @@ base_URL: https://skin.api.viewty-platform.com/
 
 ### APIの説明
 システムの構成上、APIを2つに分けています。
-1.リダイレクト先のurlと診断する画像をPOSTし、ハッシュを受け取る
-2.1で受け取ったハッシュと共にGETを叩いて、skin_dataを取得する
+1. リダイレクト先のurlと診断する画像をPOSTし、ハッシュを受け取る
+2. 1で受け取ったハッシュと共にGETを叩いて、skin_dataを取得する
 
 ### クライアント側
 カメラのwebサイトurl : https://web.viewty.jp/face-detect/ybcjit4t/?callback=${callback_url}
@@ -39,7 +39,6 @@ base_URL: https://skin.api.viewty-platform.com/
 ### 認証
 ヘッダにこちらで発行したKeyの情報を付与してください  
 ※Keyは、契約後に配布いたします。
-
 POST : /api/v1/face-detect/third-party-api/
 ```
 #Request
