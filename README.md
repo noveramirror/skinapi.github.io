@@ -41,6 +41,8 @@ base_URL: https://skin.api.viewty-platform.com/
 ※Keyは、契約後に配布いたします。
 
 ###### POST : /api/v1/face-detect/third-party-api/
+※使用用途例:自社サイトへの組み込み
+
 ```
 #Request
 {
@@ -101,3 +103,50 @@ base_URL: https://skin.api.viewty-platform.com/
     ]
 }
 ```
+
+###### POST : /api/v1/face-detect/
+※使用用途例:ネイティブアプリへの組み込み
+
+```
+#Request
+{
+  // 診断する画像
+  facePict: File(ImageBinary)
+}
+```
+
+```
+#Response
+# HTTP Status: 200 OK
+{
+    //肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"mix"（混合肌）/"sensitive"（敏感肌）/"normal"（普通肌）)
+    skin: 'String',
+    //肌スコア
+    scores: [
+        {
+          //日本語タイトル（"シワ"/"キメ"/"シミ"/"透明感"/"潤い"/"毛穴"）
+            title_ja: 'String',
+            //英語タイトル（"wrinkle"/"texture"/"stain"/"clarity"/"moisture"/"pores")
+            title_en: 'String',
+            //0~1のスコア（min=0, max=1）
+            score: 'integer',
+            //同世代の平均値（未入力の場合0）※テストURLの場合0
+            average: 'integer',
+            //A~Gのスコアに連動したランク(min=G, max=A)
+            rank: 'String',
+            //項目が"毛穴","シワ"の場合、値が来る
+            details: {
+                //詳細の識別子（"pores"（毛穴）/"wrinkle"（シワ）)
+                detailType: 'String',
+                //個数
+                detailValue: 'integer',
+                //"個"などの単位
+                detailUnit": 'String'
+            }
+        },
+        
+        ...
+        
+        }
+    ]
+}
