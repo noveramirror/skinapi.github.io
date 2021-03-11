@@ -26,9 +26,20 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 base_URL: https://skin.api.viewty-platform.com/
 
 ### APIの説明
+#####POST : /api/v1/face-detect/third-party-api/の場合
 システムの構成上、APIを2つに分けています。
 1. リダイレクト先のurlと診断する画像をPOSTし、ハッシュを受け取る
 2. 1で受け取ったハッシュと共にGETを叩いて、skin_dataを取得する
+
+※使用用途例:自社サイトへの組み込み
+
+
+#####POST : /api/v1/face-detect/の場合
+1. 診断する画像をPOSTし、skin_dataを取得する
+
+※使用用途例:ネイティブアプリへの組み込み
+
+
 
 ### クライアント側
 カメラのwebサイトurl : https://web.viewty.jp/face-detect/ybcjit4t/?callback=${callback_url}
@@ -41,8 +52,6 @@ base_URL: https://skin.api.viewty-platform.com/
 ※Keyは、契約後に配布いたします。
 
 ###### POST : /api/v1/face-detect/third-party-api/
-※使用用途例:自社サイトへの組み込み
-
 ```
 #Request
 {
@@ -105,8 +114,6 @@ base_URL: https://skin.api.viewty-platform.com/
 ```
 
 ###### POST : /api/v1/face-detect/
-※使用用途例:ネイティブアプリへの組み込み
-
 ```
 #Request
 {
