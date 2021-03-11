@@ -9,7 +9,7 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 2. AIサーバが判定した肌スコアを返します。
 
 - 顔写真を無許可でサーバに保存することはありません
-- 匿名情報（タイムスタンプ／アクセストークンID／肌スコア）をAPIコール時に保存します<br>
+- 匿名情報（タイムスタンプ／アクセストークンID／肌スコア）をAPIコール時に保存します
 
 
 ## 肌スコア
@@ -24,7 +24,7 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 
 ## 開発
 ### API
-base_URL: https://skin.api.viewty-platform.com/
+base_URL: https://skin.api.viewty-platform.com/<br>
 POST : /api/v1/face-detect/
 
 1. 診断する画像をPOSTし、skin_dataを取得する
