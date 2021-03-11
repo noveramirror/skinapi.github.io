@@ -32,7 +32,7 @@ POST : /api/v1/face-detect/third-party-api/
 1. リダイレクト先のurlと診断する画像をPOSTし、ハッシュを受け取る
 2. 1で受け取ったハッシュと共にGETを叩いて、skin_dataを取得する
 
-#### クライアント側
+#### 1.1クライアント側
 カメラのwebサイトurl : https://web.viewty.jp/face-detect/ybcjit4t/?callback=${callback_url}
 
 クエリで <font color="Red">callback</font> 値に指定するURLは必ず事前に <font color="Red">encodeURIComponent</font> してください
