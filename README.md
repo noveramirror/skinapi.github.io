@@ -27,7 +27,7 @@ base_URL: https://skin.api.viewty-platform.com/
 
 ### APIの説明
 
-## 1. POST : /api/v1/face-detect/third-party-api/の場合
+#### 1. POST : /api/v1/face-detect/third-party-api/の場合
 
 システムの構成上、APIを2つに分けています。
 1. リダイレクト先のurlと診断する画像をPOSTし、ハッシュを受け取る
@@ -36,7 +36,7 @@ base_URL: https://skin.api.viewty-platform.com/
 ※使用用途例:自社サイトへの組み込み
 
 
-## 2. POST : /api/v1/face-detect/の場合
+#### 2. POST : /api/v1/face-detect/の場合
 
 1. 診断する画像をPOSTし、skin_dataを取得する
 
