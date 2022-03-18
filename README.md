@@ -23,7 +23,8 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 - 肌タイプ（乾燥肌、油性肌、混合肌、敏感肌、普通肌）
 
 ## 開発
-### API
+### APIのみを利用する場合
+#### API URL
 base_URL: https://skin.api.viewty-platform.com/<br>
 POST : /api/v1/face-detect/
 
@@ -38,7 +39,7 @@ POST : /api/v1/face-detect/
 #Request
 {
   // 診断する画像
-  facePict: File(ImageBinary)
+  facePict: Base64
 }
 ```
 
@@ -77,3 +78,83 @@ POST : /api/v1/face-detect/
         }
     ]
 }
+```
+### 弊社提供のカメラモジュールを活用する場合
+#### API URL
+base_URL: https://skin.api.viewty-platform.com/<br>
+POST : /api/v1/face-detect/third-party-api/<br>
+GET : /api/v1/face-detect/third-party-api/{hash}
+
+※システム構成上APIを2つに分けています。
+
+1.  リダイレクト先のurlと診断する画像をPOSTし、ハッシュ値を取得
+2.  1で受け取ったハッシュ値をパラメータにのせ、<br>
+    Access-Control-Allow-Originにリダイレクト先のurlを指定して、getのメソッドでスコアを取得
+
+
+### 認証
+ヘッダに弊社発行のアクセストークンIDの情報を付与してください  
+※弊社発行のアクセストークンIDは、契約後に配布いたします。
+
+###### POST : /api/v1/third-party-api/
+```
+#Request
+{
+  // 診断する画像
+  facePict: Base64
+  // リダイレクト先のurl
+  url: string
+}
+```
+```
+#Response
+# HTTP Status: 200 OK
+{hash:string}
+```
+
+###### GET : /api/v1/third-party-api/{hash}
+```
+#Request{}
+```
+
+```
+#Response
+# HTTP Status: 200 OK
+{
+    //肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"mix"（混合肌）/"sensitive"（敏感肌）/"normal"（普通肌）)
+    skin: 'String',
+    //肌スコア
+    scores: [
+        {
+          //日本語タイトル（"シワ"/"キメ"/"シミ"/"透明感"/"潤い"/"毛穴"）
+            title_ja: 'String',
+            //英語タイトル（"wrinkle"/"texture"/"stain"/"clarity"/"moisture"/"pores")
+            title_en: 'String',
+            //0~1のスコア（min=0, max=1）
+            score: 'integer',
+            //同世代の平均値（未入力の場合0）※テストURLの場合0
+            average: 'integer',
+            //A~Gのスコアに連動したランク(min=G, max=A)
+            rank: 'String',
+            //項目が"毛穴","シワ"の場合、値が来る
+            details: {
+                //詳細の識別子（"pores"（毛穴）/"wrinkle"（シワ）)
+                detailType: 'String',
+                //個数
+                detailValue: 'integer',
+                //"個"などの単位
+                detailUnit": 'String'
+            }
+        },
+        
+        ...
+        
+        }
+    ]
+}
+```
+####カメラ機能について
+##### カメラURL
+カメラのwebサイトurl : https://web.viewty.jp/face-detect/ybcjit4t/?callback=${callback_url}<br>
+※クエリで <font color="Red">callback</font> 値に指定するURLは必ず事前に <font color="Red">encodeURIComponent</font> してください
+（callbackURL自体にクエリなどが含まれていると正常にリダイレクトできません）
