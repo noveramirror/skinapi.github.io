@@ -153,7 +153,7 @@ GET : /api/v1/face-detect/third-party-api/{hash}
     ]
 }
 ```
-####カメラ機能について
+#### カメラ機能について
 ##### カメラURL
 カメラのwebサイトurl : https://web.viewty.jp/face-detect/ybcjit4t/?callback=${callback_url}<br>
 ※クエリで <font color="Red">callback</font> 値に指定するURLは必ず事前に <font color="Red">encodeURIComponent</font> してください
