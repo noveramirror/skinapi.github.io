@@ -47,37 +47,36 @@ POST : /api/v1/skin-detect/
 #Response
 # HTTP Status: 200 OK
 {
+　　 
     //肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"mix"（混合肌）/"sensitive"（敏感肌）/"normal"（普通肌）)
-    skin: 'String',
+    condition: string,
+    
+    //肌年齢
+    age: number,
+    
     //肌スコア
-    scores: [
-        {
-          //日本語タイトル（"シワ"/"キメ"/"シミ"/"透明感"/"潤い"/"毛穴"）
-            title_ja: 'String',
-            //英語タイトル（"wrinkle"/"texture"/"stain"/"clarity"/"moisture"/"pores")
-            title_en: 'String',
-            //0~1のスコア（min=0, max=1）
-            score: 'integer',
-            //同世代の平均値（未入力の場合0）※テストURLの場合0
-            average: 'integer',
-            //A~Gのスコアに連動したランク(min=G, max=A)
-            rank: 'String',
-            //項目が"毛穴","シワ"の場合、値が来る
+    scores:{
+        //英語タイトル（"wrinkle"/"texture"/"stain"/"clarity"/"moisture"/"pores")
+        SkinDetectKey:{
+            score: number
+            
+            // 項目評価
+            rank: SkinRank
+            // 現状常に0
+            average: number
             details: {
-                //詳細の識別子（"pores"（毛穴）/"wrinkle"（シワ）)
-                detailType: 'String',
-                //個数
-                detailValue: 'integer',
-                //"個"などの単位
-                detailUnit": 'String'
+                        //詳細の識別子（"pores"（毛穴）/"wrinkle"（シワ）)
+                        detailType: string
+                        //個数
+                        detailValue: string
+                        //"個"などの単位
+                        detailUnit: string
+                      }
+             
             }
-        },
-        
         ...
-        
         }
     ]
-}
 ```
 ### 弊社提供のカメラモジュールを活用する場合
 #### API URL
