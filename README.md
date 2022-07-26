@@ -31,9 +31,6 @@ POST : /api/v2/skin-detect/
 
 1. 診断する画像をPOSTし、skin_dataを取得する
 
-### 認証
-ヘッダに弊社発行のアクセストークンIDの情報を付与してください  
-※弊社発行のアクセストークンIDは、契約後に配布いたします。
 
 ###### POST : /api/v2/skin-detect/
 ```
