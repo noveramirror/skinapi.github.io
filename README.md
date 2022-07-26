@@ -37,7 +37,7 @@ POST : /api/v2/skin-detect/
 #Request
 {
   // 診断する画像
-  facePict: イメージファイル
+  facePict: イメージファイル(写真から顔部分のみをトリミング→長辺256pxになるようにリサイズ)
 }
 
 python
