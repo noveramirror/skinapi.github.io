@@ -37,8 +37,15 @@ POST : /api/v2/skin-detect/
 #Request
 {
   // 診断する画像
-  facePict: Base64
+  facePict: イメージファイル
 }
+
+python
+DETECTION_URL = f'https://skin.api.viewty-platform.com/api/2/skin-detect'
+files=[('facePict',
+          (img_path,open(img_path,'rb'),'image/jpeg'))
+          ]
+res = requests.post(DETECTION_URL, files=files)
 ```
 
 ```
