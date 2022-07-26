@@ -35,7 +35,7 @@ POST : /api/v2/skin-detect/
 ヘッダに弊社発行のアクセストークンIDの情報を付与してください  
 ※弊社発行のアクセストークンIDは、契約後に配布いたします。
 
-###### POST : /api/v1/skin-detect/
+###### POST : /api/v2/skin-detect/
 ```
 #Request
 {
