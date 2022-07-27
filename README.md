@@ -40,6 +40,9 @@ POST : /api/v2/skin-detect/
   facePict: イメージファイル(写真から顔部分のみをトリミング→長辺256pxになるようにリサイズ)
 }
 
+イメージファイルサンプル
+https://github.com/noveramirror/skinapi.github.io/blob/master/img_sample.zip
+
 python
 DETECTION_URL = f'https://skin.api.viewty-platform.com/api/2/skin-detect'
 files=[('facePict',
