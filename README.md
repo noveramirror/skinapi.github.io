@@ -28,7 +28,8 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 ## 開発
 ### APIのみを利用する場合
 #### API URL
-base_URL: https://dev.skin.api.viewty-platform.com/<br>
+development base_URL: https://dev2.skin.api.viewty-platform.com/<br>
+production base_URL: https://skin.api.viewty.jp/<br>
 POST : /api/v2/skin-detect/
 
 1. 診断する画像をPOSTし、skin_dataを取得する
@@ -42,15 +43,21 @@ POST : /api/v2/skin-detect/
   facePict: イメージファイル(写真から顔部分のみをトリミング→長辺256pxになるようにリサイズ)
 }
 
+{'authorizationToken':'XXXXXX'}
+
 イメージファイルサンプル
 https://github.com/noveramirror/skinapi.github.io/blob/master/img_sample.zip
 
 python
-DETECTION_URL = f'https://skin.api.viewty-platform.com/api/2/skin-detect'
+DETECTION_URL = f'https://dev2.skin.api.viewty-platform.com/api/2/skin-detect'
 files=[('facePict',
           (img_path,open(img_path,'rb'),'image/jpeg'))
           ]
-res = requests.post(DETECTION_URL, files=files)
+headers = {'authorizationToken':'XXXXX'} 
+payload={}
+
+res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, files=files)
+
 ```
 
 ```
