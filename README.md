@@ -63,10 +63,6 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 ```
 #Response
 # HTTP Status: 200 OK
-
-```
-#Response
-# HTTP Status: 200 OK
 {
   "age": 38, #肌年齢 (int)
   "condition": "normal",　 #肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"normal"（普通肌）
@@ -84,7 +80,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
       "title_en": "clarity", #項目(英語)
       "title_ja": "\u900f\u660e\u611f" #項目(日本語)
     },
-    "moisture": {
+    "moisture": {　#潤い
       "average": 0,　　　　　　　# 現状常に0
       "details": {
         "detailValue": 0.673828125　#診断結果
@@ -93,8 +89,8 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
       "score": 0.28,　　　　#ランクスコア
       "title_en": "moisture",　#項目(英語)
       "title_ja": "\u6f64\u3044"　#項目(日本語)
-    },
-    "pores": {
+    }, 
+    "pores": {. #毛穴
       "average": 0,　　　　　　　# 現状常に0
       "details": {
         "detailValue": 0.7265625　#診断結果
@@ -104,7 +100,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
       "title_en": "pores",　　　　　　　　　　　　#項目(英語)
       "title_ja": "\u6bdb\u7a74"　#項目(日本語)
     },
-    "stain": {
+    "stain": {　#シミ
       "average": 0,　　　　　　　　# 現状常に0
       "details": {
         "detailValue": 0.64599609375　　#診断結果
@@ -114,7 +110,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
       "title_en": "stain",　　　　　　　　　　　　　#項目(英語)
       "title_ja": "\u30b7\u30df"　#項目(日本語)
     },
-    "texture": {
+    "texture": {　#キメ
       "average": 0,　　　　　　　# 現状常に0
       "details": {
         "detailValue": 0.7001953125　#診断結果
@@ -124,7 +120,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
       "title_en": "texture",　　　　　　　　　#項目(英語)
       "title_ja": "\u30ad\u30e1"　#項目(日本語)
     },
-    "wrinkle": {
+    "wrinkle": {. #シワ
       "average": 0,　　　　　　　　# 現状常に0
       "details": {
         "detailValue": 0.18168881702583814　#診断結果
@@ -135,5 +131,6 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
       "title_ja": "\u30b7\u30ef"　#項目(日本語)
     }
   }
-}```
+}
+```
 
