@@ -63,27 +63,77 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 ```
 #Response
 # HTTP Status: 200 OK
-{
-　　  //肌年齢
-    age: number,
-    //肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"normal"（普通肌）)
-    condition: string,
 
-    //肌スコア
-    scores:{
-        //英語タイトル（"wrinkle"/"texture"/"stain"/"clarity"/"moisture"/"pores")
-        SkinDetectKey:{
-            // 現状常に0
-            average: number
-            details: {
-                        detailValue: number
-                      }
-            // 項目評価
-            rank: SkinRank
-            score: number
-            title_en: string
-            title_ja: string
-        }
-    }
-}
 ```
+#Response
+# HTTP Status: 200 OK
+{
+  "age": 38, #肌年齢 (int)
+  "condition": "normal",　 #肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"normal"（普通肌）
+  "details": {
+    "age": 38.15592555201033 # 肌年齢 (float)
+  },
+  "scores": {
+    "clarity": { #透明感
+      "average": 0,　　# 現状常に0
+      "details": {
+        "detailValue": 0.51220703125 #診断結果
+      },
+      "rank": "D",　  #ランク
+      "score": 0.42, #ランクスコア
+      "title_en": "clarity", #項目(英語)
+      "title_ja": "\u900f\u660e\u611f" #項目(日本語)
+    },
+    "moisture": {
+      "average": 0,　　　　　　　# 現状常に0
+      "details": {
+        "detailValue": 0.673828125　#診断結果
+      },
+      "rank": "E",　　　　　　　　#ランク
+      "score": 0.28,　　　　#ランクスコア
+      "title_en": "moisture",　#項目(英語)
+      "title_ja": "\u6f64\u3044"　#項目(日本語)
+    },
+    "pores": {
+      "average": 0,　　　　　　　# 現状常に0
+      "details": {
+        "detailValue": 0.7265625　#診断結果
+      },
+      "rank": "C",　　　　　　　　#ランク
+      "score": 0.56,　　　　#ランクスコア
+      "title_en": "pores",　　　　　　　　　　　　#項目(英語)
+      "title_ja": "\u6bdb\u7a74"　#項目(日本語)
+    },
+    "stain": {
+      "average": 0,　　　　　　　　# 現状常に0
+      "details": {
+        "detailValue": 0.64599609375　　#診断結果
+      },
+      "rank": "C",　　　　　　　　#ランク
+      "score": 0.56,　　　　#ランクスコア
+      "title_en": "stain",　　　　　　　　　　　　　#項目(英語)
+      "title_ja": "\u30b7\u30df"　#項目(日本語)
+    },
+    "texture": {
+      "average": 0,　　　　　　　# 現状常に0
+      "details": {
+        "detailValue": 0.7001953125　#診断結果
+      },
+      "rank": "E",　　　　#ランク
+      "score": 0.28,　　　　#ランクスコア
+      "title_en": "texture",　　　　　　　　　#項目(英語)
+      "title_ja": "\u30ad\u30e1"　#項目(日本語)
+    },
+    "wrinkle": {
+      "average": 0,　　　　　　　　# 現状常に0
+      "details": {
+        "detailValue": 0.18168881702583814　#診断結果
+      },
+      "rank": "A",　　　　　　　　#ランク
+      "score": 1,　　　　#ランクスコア
+      "title_en": "wrinkle",　　　　　　　　#項目(英語)
+      "title_ja": "\u30b7\u30ef"　#項目(日本語)
+    }
+  }
+}```
+
