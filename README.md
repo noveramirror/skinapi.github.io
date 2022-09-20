@@ -1,7 +1,7 @@
 # skinAPI
 
 ## API概要
-![a259c2e0-47b5-4f9c-9a24-0ae1ddcf7893](https://user-images.githubusercontent.com/33708804/94100177-dcefa180-fe67-11ea-9cee-c7e1ff5b55a1.png)
+![94100177-dcefa180-fe67-11ea-9cee-c7e1ff5b55a1](https://user-images.githubusercontent.com/33708804/191149972-77221344-ca47-44e2-b973-e893d00353a5.png)
 
 skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シミの状態」「シワの状態」などの肌診断の結果（肌スコア）を取得することができます。リクエストは、画像データをHTTPSを使用して送信するだけ、結果はJSON形式で返却されます。プラットフォームに制限はありません。
 
