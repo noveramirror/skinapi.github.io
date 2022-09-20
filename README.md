@@ -19,7 +19,7 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 - 透明感（0から1のスコア）
 - 潤い（0から1のスコア）
 - 毛穴（0から1のスコア）
-- 肌タイプ（乾燥肌、普通肌、油性肌）
+- 肌タイプ（乾燥肌、普通肌、油性肌、敏感肌）
 - 肌年齢 (開発中)
 
 ## 診断モデル概要
@@ -65,7 +65,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 # HTTP Status: 200 OK
 {
   "age": 38, #肌年齢 (int)
-  "condition": "normal",　 #肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"normal"（普通肌）
+  "condition": "normal",　 #肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"normal"（普通肌） / "sensitive" (敏感肌)
   "details": {
     "age": 38.15592555201033 # 肌年齢 (float)
   },
