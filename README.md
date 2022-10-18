@@ -28,8 +28,7 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 ## 開発
 ### APIのみを利用する場合
 #### API URL
-development base_URL: https://dev2.skin.api.viewty-platform.com/<br>
-production base_URL: https://skin.api.viewty.jp/<br>
+base_URL: https://dev2.skin.api.viewty-platform.com/<br>
 POST : /api/v2/skin-detect/
 
 1. 診断する画像をPOSTし、skin_dataを取得する
