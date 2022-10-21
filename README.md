@@ -32,7 +32,12 @@ development base_URL: https://dev.skin.api.viewty-platform.com/<br>
 production base_URL: https://skin.api.viewty.jp/<br>
 POST : /api/v2/skin-detect/
 
-1. 診断する画像をPOSTし、skin_dataを取得する
+### Responses:<br>
+- HTTP Status: 200 OK<br>
+- HTTP Status: 502 error
+
+
+### 診断する画像をPOSTし、skin_dataを取得する
 
 
 ###### POST : /api/v2/skin-detect/
@@ -134,3 +139,11 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 }
 ```
 
+
+```
+#Response
+# HTTP Status: 502 Error
+<Response [502]>
+{"message": "Internal server error"}
+
+```
