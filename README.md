@@ -33,9 +33,7 @@ POST : api/v2/skin-image-checker
 
 ### Responses:<br>
 - HTTP Status: 200 OK<br>
-- HTTP Status: 200 OK return値 = no_face #AIサーバーでのエラー<br>
 - HTTP Status: 502 Error
-
 
 ### 診断する画像をPOSTし、skin_dataを取得する
 
@@ -59,7 +57,7 @@ files=[('facePict',
           (img_path,open(img_path,'rb'),'image/jpeg'))
           ]
 headers = {'authorizationToken':'XXXXX'} 
-payload={'face_check' : 0}. # face checkを行う場合は 1 defaultは0
+payload={'face_check' : 0}. # face checkを行う場合は 1 defaultは0 顔判定＝NGの場合　返り値 = 　no_face　
 
 res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, files=files)
 
@@ -140,7 +138,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 ```
 ```
 #Response
-# HTTP Status: 200 OK # AI server内　face_check Error
+# HTTP Status: 200 OK # AI server内　face_check 顔判定 = NG
 no_face 
 ```
 
