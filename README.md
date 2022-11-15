@@ -33,7 +33,7 @@ POST : api/v2/skin-image-checker
 
 ### Responses:<br>
 - HTTP Status: 200 OK<br>
-- HTTP Status: 200 no_face #AIサーバーでのエラー<br>
+- HTTP Status: 200 OK return値 = no_face #AIサーバーでのエラー<br>
 - HTTP Status: 502 Error
 
 
@@ -140,8 +140,8 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 ```
 ```
 #Response
-# HTTP Status: 200 face_check Error
-no_face
+# HTTP Status: 200 OK # AI server内　face_check Error
+no_face 
 ```
 
 ```
