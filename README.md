@@ -28,9 +28,8 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 ## 開発
 ### APIのみを利用する場合
 #### API URL
-development base_URL: https://dev.skin.api.viewty-platform.com/<br>
-production base_URL: https://skin.api.viewty.jp/<br>
-POST : /api/v2/skin-detect/
+Beta version base_URL: [https://skin.api.viewty.jp](https://skin.api.viewty.jp)<br>
+POST : api/v2/skin-image-checker
 
 ### Responses:<br>
 - HTTP Status: 200 OK<br>
@@ -59,7 +58,7 @@ files=[('facePict',
           (img_path,open(img_path,'rb'),'image/jpeg'))
           ]
 headers = {'authorizationToken':'XXXXX'} 
-payload={}
+payload={'face_check' : 0}. # face checkを行う場合は 1
 
 res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, files=files)
 
