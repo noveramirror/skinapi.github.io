@@ -20,7 +20,7 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 - 潤い（0から1のスコア）
 - 毛穴（0から1のスコア）
 - 肌タイプ（乾燥肌、普通肌、油性肌、敏感肌）
-- 肌年齢 (開発中)
+- 肌年齢 
 
 ## 診断モデル概要
 <img width="893" alt="診断モデル概要" src="https://user-images.githubusercontent.com/103926148/184310881-eb992111-0ead-471f-97b5-492c75bd21ce.png">
@@ -28,17 +28,22 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 ## 開発
 ### APIのみを利用する場合
 #### API URL
-Beta version base_URL: [https://skin.api.viewty.jp](https://skin.api.viewty.jp)<br>
+
+prd version
+
+
+dev version base_URL: [https://dev.skin.api.viewty-platform.com/](https://dev.skin.api.viewty-platform.com/)<br>
 POST : api/v2/skin-image-checker
 
 ### Responses:<br>
 - HTTP Status: 200 OK<br>
+- HTTP Status: 400 Error<br>
 - HTTP Status: 502 Error
 
 ### 診断する画像をPOSTし、skin_dataを取得する
 
 
-###### POST : api/v2/skin-image-checker
+###### POST : api/v2/skin-detect
 ```
 #Request
 {
@@ -47,12 +52,12 @@ POST : api/v2/skin-image-checker
 }
 
 {'authorizationToken':'XXXXXX'}
-
+{'face_check' : 0}
 イメージファイルサンプル
 https://github.com/noveramirror/skinapi.github.io/blob/master/img_sample.zip
 
 python
-DETECTION_URL = https://skin.api.viewty.jp/api/v2/skin-detect
+DETECTION_URL = https://dev.skin.api.viewty-platform.com/api/v2/skin-image-checker
 files=[('facePict',
           (img_path,open(img_path,'rb'),'image/jpeg'))
           ]
@@ -140,6 +145,24 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 #Response
 # HTTP Status: 200 OK # AI server内　face_check 顔判定 = NG
 no_face 
+```
+
+```
+#Response
+# HTTP Status: 400 Error # facePictの値が無いの場合
+{'message': '不正な画像データです'} 
+```
+
+```
+#Response
+# HTTP Status: 400 Error # ・facePictが画像データとして正しくない場合
+message: 不正な画像データです
+```
+
+```
+#Response
+# HTTP Status: 400 Error # face_checkの値が文字列等場合
+message: face_checkの値が不正です 
 ```
 
 ```
