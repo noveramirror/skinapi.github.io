@@ -146,7 +146,7 @@ no_face
 
 ```
 #Response
-# HTTP Status: 400 Error # facePictの値が無いの場合
+# HTTP Status: 400 Error # facePictの値が無いの場合 / 画像ファイルではない場合
  {"message": "\u753b\u50cf\u30c7\u30fc\u30bf\u304c\u306a\u3044\u304b\u307e\u305f\u306f\u4e0d\u6b63\u3067\u3059"} #画像データがないかまたは不正です
 ```
 
