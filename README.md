@@ -29,11 +29,8 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 ### APIのみを利用する場合
 #### API URL
 
-prd version
-
-
 dev version base_URL: [https://dev.skin.api.viewty-platform.com/](https://dev.skin.api.viewty-platform.com/)<br>
-POST : api/v2/skin-image-checker
+POST : api/v2/skin-detect
 
 ### Responses:<br>
 - HTTP Status: 200 OK<br>
@@ -57,7 +54,7 @@ POST : api/v2/skin-image-checker
 https://github.com/noveramirror/skinapi.github.io/blob/master/img_sample.zip
 
 python
-DETECTION_URL = https://dev.skin.api.viewty-platform.com/api/v2/skin-image-checker
+DETECTION_URL = https://dev.skin.api.viewty-platform.com/api/v2/skin-detect
 files=[('facePict',
           (img_path,open(img_path,'rb'),'image/jpeg'))
           ]
@@ -150,19 +147,20 @@ no_face
 ```
 #Response
 # HTTP Status: 400 Error # facePictの値が無いの場合
-{'message': '不正な画像データです'} 
+ {"message": "\u753b\u50cf\u30c7\u30fc\u30bf\u304c\u306a\u3044\u304b\u307e\u305f\u306f\u4e0d\u6b63\u3067\u3059"} #画像データがないかまたは不正です
 ```
 
 ```
 #Response
 # HTTP Status: 400 Error # ・facePictが画像データとして正しくない場合
-message: 不正な画像データです
+{"message":"\u4e0d\u6b63\u306a\u753b\u50cf\u30c7\u30fc\u30bf\u3067\u3059"} #不正な画像データです
+
 ```
 
 ```
 #Response
 # HTTP Status: 400 Error # face_checkの値が文字列等場合
-message: face_checkの値が不正です 
+ {"message":"face_check\u306e\u5024\u304c\u4e0d\u6b63\u3067\u3059"} #face_checkの値が不正です
 ```
 
 ```
