@@ -67,7 +67,7 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 
 ```
 #Response
-# HTTP Status: 200 OK
+# HTTP Status: 200 OK　# AI server内　face_check 顔判定 = OK
 {
   "age": 38, #肌年齢 (int)
   "condition": "normal",　 #肌タイプ（"dry"（乾燥肌）/"oily"（脂性肌）/"normal"（普通肌） / "sensitive" (敏感肌)
