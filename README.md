@@ -152,13 +152,6 @@ no_face
 
 ```
 #Response
-# HTTP Status: 400 Error # ・facePictが画像データとして正しくない場合
-{"message":"\u4e0d\u6b63\u306a\u753b\u50cf\u30c7\u30fc\u30bf\u3067\u3059"} #不正な画像データです
-
-```
-
-```
-#Response
 # HTTP Status: 400 Error # face_checkの値が文字列等場合
  {"message":"face_check\u306e\u5024\u304c\u4e0d\u6b63\u3067\u3059"} #face_checkの値が不正です
 ```
