@@ -28,20 +28,18 @@ skinAPIはシンプルなAPIです。人物の顔写真を送るだけで「シ�
 ## 開発
 ### APIのみを利用する場合
 #### API URL
-prd version base URL: [https://skin.api.viewty.jp/](https://skin.api.viewty.jp/)<br>
-POST : api/v2/skin-image-checker<br>
-dev version base URL: [https://dev.skin.api.viewty-platform.com/](https://dev.skin.api.viewty-platform.com/)<br>
-POST : api/v2/skin-detect
+prd version base URL: [https://skin.api.viewty.jp/](https://api.viewty.jp/)<br>
+POST : v2/skin-image-checker<br>
 
 ### Responses:<br>
 - HTTP Status: 200 OK<br>
 - HTTP Status: 400 Error<br>
-- HTTP Status: 502 Error
+- HTTP Status: 500 Error
 
 ### 診断する画像をPOSTし、skin_dataを取得する
 
 
-###### POST : api/v2/skin-detect
+###### POST : v2/skin-image-checker
 ```
 #Request
 {
@@ -50,17 +48,17 @@ POST : api/v2/skin-detect
 }
 
 {'authorizationToken':'XXXXXX'}
-{'face_check' : 0}
+{'faceCheck' : 0}
 イメージファイルサンプル
 https://github.com/noveramirror/skinapi.github.io/blob/master/img_sample.zip
 
 python
-DETECTION_URL = https://dev.skin.api.viewty-platform.com/api/v2/skin-detect
+DETECTION_URL = https://api.viewty.jp/v2/skin-image-checker
 files=[('facePict',
           (img_path,open(img_path,'rb'),'image/jpeg'))
           ]
 headers = {'authorizationToken':'XXXXX'} 
-payload={'face_check' : 0}. # face checkを行う場合は 1 defaultは0 顔判定＝NGの場合　返り値 = 　no_face　
+payload={'faceCheck' : 0}. # face checkを行う場合は 1 defaultは0 顔判定＝NGの場合　返り値 = 　no_face　
 
 res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, files=files)
 
@@ -141,26 +139,28 @@ res = requests.request('POST', DETECTION_URL, headers=headers, data=payload, fil
 ```
 ```
 #Response
-# HTTP Status: 200 OK # AI server内　face_check 顔判定 = NG
+# HTTP Status: 200 OK # AI server内　faceCheck 顔判定 = NG
 no_face 
 ```
 
 ```
 #Response
-# HTTP Status: 400 Error # facePictの値が無いの場合 / 画像ファイルではない場合
- {"message": "\u753b\u50cf\u30c7\u30fc\u30bf\u304c\u306a\u3044\u304b\u307e\u305f\u306f\u4e0d\u6b63\u3067\u3059"} #画像データがないかまたは不正です
+# HTTP Status: 400 Error #  がそうファイルがない場合 / 画像ファイルではない場合
+ image data is nothing or invalid
 ```
 
 ```
 #Response
-# HTTP Status: 400 Error # face_checkの値が文字列等場合
- {"message":"face_check\u306e\u5024\u304c\u4e0d\u6b63\u3067\u3059"} #face_checkの値が不正です
+# HTTP Status: 400 Error # faceCheckの値が文字列等場合
+ value of faceCheck is invalid
 ```
 
 ```
 #Response
-# HTTP Status: 502 Error
-<Response [502]>
-{"message": "Internal server error"}
-
+# HTTP Status: 500 Error　　# tokenが正しくない場合
+incorrect token
+```
+```
+# HTTP Status: 500 Error ＃上記以外の場合
+unknown error occurred
 ```
